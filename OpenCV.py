@@ -51,14 +51,15 @@ class OpenCV:
         self.duration = int(self.frame_count / self.fps);
         self.timing = 0;
 
+        # if thread is reset, create new instance
+        if (self.thread == None):
+            self.thread = RenderThread(self.render);
+  
         # getting video properties
         if self.video.isOpened(): 
             self.width  = int(self.video.get(cv2.CAP_PROP_FRAME_WIDTH))  # float `width`
             self.height  = int(self.video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # float `width`
 
-        # self.preview_window = Preview(self.video.get(cv2.CAP_PROP_FRAME_WIDTH), self.video.get(cv2.CAP_PROP_FRAME_HEIGHT), self.file_path);
-        # self.preview_window.creteWindow(self.video.get(cv2.CAP_PROP_FRAME_WIDTH), self.video.get(cv2.CAP_PROP_FRAME_HEIGHT));
-    
     def createPreview(self, root):
         # create preview instance object
         self.video_params = VideoParams(root, self.file_path, self.width, self.height);
@@ -125,8 +126,6 @@ class OpenCV:
                 self.loop = False;
                 break;
 
-            # cv2.waitKey(self.each_frame_duration);
-
         self.output.release();
         self.video.release();
         
@@ -148,7 +147,9 @@ class OpenCV:
             
             # stop thread
             self.thread.stop();
-   
+            # reset thread
+            self.thread = None;
+
             cv2.destroyAllWindows();
 
     def cancelProcess(self):
@@ -161,4 +162,5 @@ class OpenCV:
         self.processing = False;
 
         self.thread.stop();
-   
+        # reset thread
+        self.thread = None;
