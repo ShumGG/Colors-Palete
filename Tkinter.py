@@ -100,10 +100,12 @@ def updateTime():
         time.sleep(1);
         
 def finishVideo():
+    
     time.sleep(5);
     if (opencv.done):
         # once video done, destroy progressbar
         progress_bar.grid_remove();
+        progress_time.grid_remove();
         cancel_button.grid_remove();
     
     if (opencv.done and opencv.cancel == False):
