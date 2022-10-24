@@ -46,6 +46,11 @@ def removeWidget(event):
 
 def processVideo():
 
+    if (opencv.getTopLevel()):
+        messagebox.showinfo(message = "Close Video Params window");
+        window.focus_force();
+        return;
+
     if (opencv.processing):
         messagebox.showinfo(message = "A video processing is running");
         window.focus_force();
@@ -100,7 +105,7 @@ def updateTime():
         time.sleep(1);
         
 def finishVideo():
-    
+
     time.sleep(5);
     if (opencv.done):
         # once video done, destroy progressbar
