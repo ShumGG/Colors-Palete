@@ -32,23 +32,6 @@ class OpenCV:
         self.cancel = False;
         self.thread = RenderThread(self.render);
         self.output_name = "";
-
-        # self.video = cv2.VideoCapture(str(file_path));
-        
-        # # getting current directoy to save edited version and audio
-        # self.current_directory = os.getcwd();
-
-        # #extracting the audio from the video
-        # #-y to auto overwritte if exist
-        # os.system("ffmpeg -i ./assets/hd.mp4 -vn -y video_audio.mp3");
-
-        # # getting video properties
-        # if self.video.isOpened(): 
-        #     self.width  = int(self.video.get(cv2.CAP_PROP_FRAME_WIDTH))  # float `width`
-        #     self.height  = int(self.video.get(cv2.CAP_PROP_FRAME_HEIGHT))  # float `width`
-
-        # # getting ready the writter
-        # self.output = cv2.VideoWriter('edited.mp4', cv2.VideoWriter_fourcc('m','p','4','v'), 30, (self.width, self.height));
     
     def setPath(self, file_path):
         self.file_path = file_path;
