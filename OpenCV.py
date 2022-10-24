@@ -6,6 +6,7 @@ from pathlib import Path;
 from VideoParams import VideoParams;
 from Image import Image;
 import time;
+import tkinter as tk;
 
 class OpenCV:
 
@@ -88,7 +89,10 @@ class OpenCV:
 
         #creating thread
         self.thread.start();
-     
+    
+    def getTopLevel(self):
+        return tk.Toplevel.winfo_exists(self.video_params);
+
     def render(self):
         
         while self.loop:
