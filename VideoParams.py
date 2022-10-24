@@ -11,6 +11,8 @@ class VideoParams(tk.Toplevel):
         
         self.title("Video Params");
         self.resizable(False, False);
+        self.protocol("WM_DELETE_WINDOW", self.done);
+
         self.padx = 20;
         self.pady = 20;
         self.fg = "white";  
@@ -40,7 +42,7 @@ class VideoParams(tk.Toplevel):
         color_width_label = tk.Label(main_label, text = "Width:", fg = self.fg);
         color_width_label.grid(row = 2, column = 0, padx = self.padx, pady = self.pady);
 
-        self.color_width_entry = tk.Entry(main_label, textvariable = "15");
+        self.color_width_entry = tk.Entry(main_label);
         self.color_width_entry.insert(0, "15");
         self.color_width_entry.grid(row = 2, column = 1, padx = self.padx, pady = self.pady);
 
@@ -72,7 +74,6 @@ class VideoParams(tk.Toplevel):
         self.thread = RenderThread(self.video.run);
 
         self.runPreview();
-
 
     def getX(self):
         return self.video.x;
