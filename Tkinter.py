@@ -38,7 +38,7 @@ def chooseVideo():
             # craete preview
             opencv.createPreview(window);
         else:
-            messagebox.showinfo(message = "Invalid video format");
+            messagebox.showinfo(message = "Invalid video format", icon = "error");
             chooseVideo();
 
 def removeWidget(event):
@@ -130,6 +130,7 @@ def cancelProcess():
 # # # # # # # # # # # # # # #  Tkinter # # # # # # # # # # # # # # # # 
 
 window = tk.Tk();
+window.iconphoto(False, tk.PhotoImage(file='./assets/icon.png'));
 window.title("City pallete");
 window.geometry("620x420");
 window.resizable(False, False);
